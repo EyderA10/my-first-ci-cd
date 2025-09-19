@@ -20,9 +20,11 @@ jobs:
             else
                 echo "You are on a different branch: $CURRENT_BRANCH"
             fi
+
         - name: Show GitHub Context
           run: |
                 echo "GitHub Context: ${{ toJson(github) }}"
+
         - name: Show Environment Variables
           run: |
                 echo "TARGET_BRANCH: $TARGET_BRANCH"
