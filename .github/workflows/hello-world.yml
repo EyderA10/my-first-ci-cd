@@ -7,6 +7,10 @@ on:
         branches: [ main ]
     workflow_dispatch:
 
+env:
+    PROJECT: My First CI/CD
+    ENVIRONMENT: Development
+
 jobs:
     greetings:
         runs-on: ubuntu-latest
@@ -28,3 +32,13 @@ jobs:
                 echo "❌ Something went wrong"
                 exit 1
             fi
+    show:
+        runs-on: ubuntu-latest
+        env:
+            RESPONSABLE: EyderAG
+        steps:
+        - name: Show info
+          run: |
+            echo "Project: $PROJECT"
+            echo "Environment: $ENVIRONMENT"
+            echo "Responsable: $RESPONSABLE"
