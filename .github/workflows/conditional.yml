@@ -1,0 +1,14 @@
+name: Conditional
+
+on:
+    push:
+        branches: [main, develop, feature/*]
+    workflow_dispatch:
+
+jobs:
+    detect:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Detect Branch
+          run: |
+            echo "Current Branch: ${{ github.ref_name }}"
