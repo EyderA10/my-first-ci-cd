@@ -1,0 +1,29 @@
+name: Branch Condition
+
+on:
+    push:
+        branches: [ main, develop, feature/* ]
+    workflow_dispatch:
+
+env:
+    TARGET_BRANCH: main
+    CURRENT_BRANCH: ${{ github.ref_name }}
+
+jobs:
+    check:
+        runs-on: unbuntu-latest
+        steps:
+        - name: Check Branch Condition✅
+          run: |
+            if [ "$CURRENT_BRANCH" == "$TARGET_BRANCH" ]; then
+                echo "You are on the target branch: $TARGET_BRANCH"
+            else
+                echo "You are on a different branch: $CURRENT_BRANCH"
+            fi
+        - name: Show GitHub Context
+          run: |
+                echo "GitHub Context: ${{ toJson(github) }}"
+        - name: Show Environment Variables
+          run: |
+                echo "TARGET_BRANCH: $TARGET_BRANCH"
+                echo "CURRENT_BRANCH: $CURRENT_BRANCH"
